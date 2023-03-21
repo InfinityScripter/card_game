@@ -4,14 +4,60 @@ const cardObjectDefinitions = [
   {id:3, imagePath:'/images/card-QueenDiamonds.png'},
   {id:4, imagePath:'/images/card-AceSpades.png'}
 ]
-console.log(cardObjectDefinitions)
+
 
 const cardBackImgPath = '/images/card-back-Blue.png'
+let cards = []
+//
+const playGameButtonElem = document.getElementById('playGame')
 
-const cardContainerElement = document.querySelector('.card-container')
+const colapsedGridAreaTemplate = '"a a" "a a"'
+const cardCollectionCellClass = '.card-pos-a'
+
+const cardContainerElem = document.querySelector('.card-container')
 
 
-createCards()
+
+loadGame()
+function loadGame(){
+  createCards()
+
+  cards = document.querySelectorAll('.card')
+
+  playGameButtonElem.addEventListener('click', startGame)}
+function startGame(){
+  initializeNewGame()
+  startRound()
+}
+
+function initializeNewGame(){}
+
+function startRound(){
+  initializeNewRound()
+  collectCards()
+}
+
+function initializeNewRound(){
+  transformGridArea(colapsedGridAreaTemplate)
+}
+
+function collectCards(){
+  transformGridArea(colapsedGridAreaTemplate)
+  addCardsToGridAreaCell(cardCollectionCellClass)
+}
+
+function transformGridArea(areas){
+  cardContainerElem.style.gridTemplateAreas = areas
+}
+//добавить карты в ячейку области сетки
+function addCardsToGridAreaCell(cellPositionClassName){
+  const cellPositionElem = document.querySelector(cellPositionClassName)
+  cards.forEach((card, index) => {
+  addChildElement(cellPositionElem, card)
+  })
+}
+
+function collectionCards(){}
 
 function createCards() {
   cardObjectDefinitions.forEach((cardItem) => {
@@ -114,13 +160,14 @@ function addCardToGridCell(card) {
 }
 
 function mapCardIdToGridCell(card) {
-  if (card.id == 1) {
+  if (card.id === '1') {
     return ".card-pos-a";
-  } else if (card.id == 2) {
+  } else if (card.id === '2') {
     return ".card-pos-b";
-  } else if (card.id == 3) {
+  } else if (card.id === '3') {
     return ".card-pos-c";
-  } else if (card.id == 4) {
+  } else if (card.id === '4') {
     return ".card-pos-d";
   }
 }
+
