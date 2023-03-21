@@ -1,3 +1,4 @@
+//Определение объекта карты. Путь к изображению лицевой стороны карты
 const cardObjectDefinitions = [
   {id:1, imagePath:'/images/card-KingHearts.png'},
   {id:2, imagePath:'/images/card-JackClubs.png'},
@@ -5,47 +6,52 @@ const cardObjectDefinitions = [
   {id:4, imagePath:'/images/card-AceSpades.png'}
 ]
 
-
+//Путь к изображению рубашки карты
 const cardBackImgPath = '/images/card-back-Blue.png'
 let cards = []
-//
+//Получить элемент кнопки «Играть»
 const playGameButtonElem = document.getElementById('playGame')
-
+//Получить элемент кнопки «Собрать карты»
 const colapsedGridAreaTemplate = '"a a" "a a"'
 const cardCollectionCellClass = '.card-pos-a'
-
+//Получить элемент контейнера карт
 const cardContainerElem = document.querySelector('.card-container')
 
 
-
+//
 loadGame()
 function loadGame(){
   createCards()
-
+//
   cards = document.querySelectorAll('.card')
 
+
+  //Назначить обработчик события «клик» кнопке «Играть»
   playGameButtonElem.addEventListener('click', startGame)}
 function startGame(){
   initializeNewGame()
   startRound()
 }
 
+//Инициализировать новую игру
 function initializeNewGame(){}
 
+//Начать новый раунд
 function startRound(){
   initializeNewRound()
   collectCards()
 }
-
+//Инициализировать новый раунд
 function initializeNewRound(){
   transformGridArea(colapsedGridAreaTemplate)
 }
 
+//собрать карты
 function collectCards(){
   transformGridArea(colapsedGridAreaTemplate)
   addCardsToGridAreaCell(cardCollectionCellClass)
 }
-
+//перевести область сетки
 function transformGridArea(areas){
   cardContainerElem.style.gridTemplateAreas = areas
 }
@@ -56,28 +62,17 @@ function addCardsToGridAreaCell(cellPositionClassName){
   addChildElement(cellPositionElem, card)
   })
 }
-
+//добавить карту в ячейку сетки
 function collectionCards(){}
 
+//добавить дочерний элемент к родительскому элементу
 function createCards() {
   cardObjectDefinitions.forEach((cardItem) => {
     createCard(cardItem)
   })
 }
 
-
-
-// <div className="card">
-//   <div className="card-inner">
-//     <div className="card-front">
-//       <img src="img/card-JackClubs.png" alt="" className="card-img">
-//     </div>
-//     <div className="card-back">
-//       <img src="img/card-back-Blue.png" alt="" className="card-img">
-//     </div>
-//   </div>
-// </div>
-
+//создать карту
 function createCard(cardItem) {
   // Создайте элемент div карты, который составляет карту
   const cardElem = createElement('div')
@@ -133,32 +128,34 @@ addChildElement(cardBackElem, cardBackImg)
   addCardToGridCell(cardElem)
 }
 
+//создать элемент
 function createElement(elemType) {
   return document.createElement(elemType)
 }
 
+//добавить класс к элементу
 function addClassToElement(elem, className) {
   elem.classList.add(className)
 }
-
+//добавить идентификатор к элементу
 function addIdToElement(elem, id) {
   elem.id = id
 }
-
+//добавить атрибут src к элементу изображения
 function addSrcToImageElement(imgElem, src) {
   imgElem.src = src
 }
-
+//добавить дочерний элемент к родительскому элементу
 function addChildElement(parentElem, childElem) {
   parentElem.appendChild(childElem)
 }
-
+//добавить элемент карты в соответствующую ячейку сетки
 function addCardToGridCell(card) {
   const cardPositionClassName = mapCardIdToGridCell(card)
   const cardPosElem = document.querySelector(cardPositionClassName)
   addChildElement(cardPosElem, card)
 }
-
+//сопоставить идентификатор карты с классом ячейки сетки
 function mapCardIdToGridCell(card) {
   if (card.id === '1') {
     return ".card-pos-a";
