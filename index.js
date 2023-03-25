@@ -12,7 +12,7 @@ const cardBackImgPath = '/images/card-back-blue.png'
 let cards = []
 const playGameButtonElem = document.getElementById('playGame')
 const cardContainerElem = document.querySelector('.card-container')
-const collapsedGridAreaTemplate = '"a b" "c d" "e f"'
+const collapsedGridAreaTemplate = '"a a" "a a" "a a"';
 const cardCollectionCellClass = ".card-pos-a"
 const numCards = cardObjectDefinitions.length
 let cardPositions = []
@@ -110,38 +110,21 @@ function updateStatusElement(elem, display, color, innerHTML) {
 
 }
 
-// Начальное количество попыток игрока
-let attempts = 2;
-
-function resetAttempts() {
-  attempts = 2;
-}
-
+// Ответ при выборе карты
 function outputChoiceFeedBack(hit) {
   if (hit) {
-    updateStatusElement(currentGameStatusElem, "block", winColor, "Молодец! Ты нашел туза! 😏");
+    updateStatusElement(currentGameStatusElem, "block", winColor, "Молодец! Ты нашел туза! 😏")
   } else {
-    updateStatusElement(currentGameStatusElem, "block", loseColor, "Не угадал 🫠");
+    updateStatusElement(currentGameStatusElem, "block", loseColor, "Не угадал 🫠")
   }
 }
 
 function evaluateCardChoice(card) {
-  // Уменьшаем количество оставшихся попыток
-  attempts--;
-
   if (card.id == aceId) {
-    updateScore();
-    outputChoiceFeedBack(true);
+    updateScore()
+    outputChoiceFeedBack(true)
   } else {
-    outputChoiceFeedBack(false);
-  }
-
-  // Проверяем, остались ли попытки
-  if (attempts > 0) {
-    updateStatusElement(currentGameStatusElem, "block", infoColor, "У тебя осталось " + attempts + " попытки. Попробуй еще раз!");
-  } else {
-    updateStatusElement(currentGameStatusElem, "block", loseColor, "У тебя закончились попытки. Попробуй еще раз!");
-    resetAttempts();
+    outputChoiceFeedBack(false)
   }
 }
 
@@ -359,38 +342,10 @@ function dealCards() {
 
 // Функция, которая возвращает стили для gridTemplateAreas, используя позиции карт
 function returnGridAreasMappedToCardPos() {
-  let firstPart = "";
-  let secondPart = "";
-  let thirdPart = "";
-  let areas = "";
-
-  cards.forEach((card, index) => {
-    if (cardPositions[index] == 1) {
-      areas = areas + "a "
-    } else if (cardPositions[index] == 2) {
-      areas = areas + "b "
-    } else if (cardPositions[index] == 3) {
-      areas = areas + "c "
-    } else if (cardPositions[index] == 4) {
-      areas = areas + "d "
-    } else if (cardPositions[index] == 5) {
-      areas = areas + "e "
-    } else if (cardPositions[index] == 6) {
-      areas = areas + "f "
-    }
-    if (index == 1) {
-      firstPart = areas.substring(0, areas.length - 1)
-      areas = "";
-    } else if (index == 3) {
-      secondPart = areas.substring(0, areas.length - 1)
-    } else if (index == 5) {
-      thirdPart = areas.substring(0, areas.length - 1)
-    }
-
-  })
-
-  return `"${firstPart}" "${secondPart}" "${thirdPart}"`
-
+  let values = ["a", "b", "c", "d", "e", "f"];
+  let shuffled = values.sort(() => 0.5 - Math.random());
+  let selected = shuffled.slice(0, 6);
+  return `"${selected[0]} ${selected[1]}" "${selected[2]} ${selected[3]}" "${selected[4]} ${selected[5]}"`;
 }
 
 
