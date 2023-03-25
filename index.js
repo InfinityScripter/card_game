@@ -9,7 +9,7 @@ const cardObjectDefinitions = [
   {id: 6, imagePath: '/images/img_1.png'}
 ]
 const aceId = 4
-const cardBackImgPath = '/images/card-back-blue.png'
+const cardBackImgPath = '/images/card-back-Blue.png'
 let cards = []
 const playGameButtonElem = document.getElementById('playGame')
 const cardContainerElem = document.querySelector('.card-container')
