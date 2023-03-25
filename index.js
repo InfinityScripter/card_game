@@ -84,7 +84,7 @@ function calculateScoreToAdd(roundNum) {
     return 50
   } else if (roundNum == 3) {
     return 25
-  } else{
+  } else {
     return 10
   }
 }
@@ -109,21 +109,39 @@ function updateStatusElement(elem, display, color, innerHTML) {
   }
 
 }
-// Ответ при выборе карты
+
+// Начальное количество попыток игрока
+let attempts = 2;
+
+function resetAttempts() {
+  attempts = 2;
+}
+
 function outputChoiceFeedBack(hit) {
   if (hit) {
-    updateStatusElement(currentGameStatusElem, "block", winColor, "Молодец! Ты нашел туза! 😏")
+    updateStatusElement(currentGameStatusElem, "block", winColor, "Молодец! Ты нашел туза! 😏");
   } else {
-    updateStatusElement(currentGameStatusElem, "block", loseColor, "Не угадал 🫠")
+    updateStatusElement(currentGameStatusElem, "block", loseColor, "Не угадал 🫠");
   }
 }
 
 function evaluateCardChoice(card) {
+  // Уменьшаем количество оставшихся попыток
+  attempts--;
+
   if (card.id == aceId) {
-    updateScore()
-    outputChoiceFeedBack(true)
+    updateScore();
+    outputChoiceFeedBack(true);
   } else {
-    outputChoiceFeedBack(false)
+    outputChoiceFeedBack(false);
+  }
+
+  // Проверяем, остались ли попытки
+  if (attempts > 0) {
+    updateStatusElement(currentGameStatusElem, "block", infoColor, "У тебя осталось " + attempts + " попытки. Попробуй еще раз!");
+  } else {
+    updateStatusElement(currentGameStatusElem, "block", loseColor, "У тебя закончились попытки. Попробуй еще раз!");
+    resetAttempts();
   }
 }
 
@@ -358,7 +376,7 @@ function returnGridAreasMappedToCardPos() {
     } else if (cardPositions[index] == 5) {
       areas = areas + "e "
     } else if (cardPositions[index] == 6) {
-    areas = areas + "f "
+      areas = areas + "f "
     }
     if (index == 1) {
       firstPart = areas.substring(0, areas.length - 1)
