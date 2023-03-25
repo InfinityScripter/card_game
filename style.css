@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 :root{
-    --card-width-lg:157px;
+    --card-width-lg:182px;
     --card-height-lg:220px;
 
     --card-width-sm:120px;
@@ -44,27 +44,27 @@ main{
 
 .card-pos-a{
     grid-area: a;
-     background-color: gray;
+     /*background-color: gray;*/
 }
 .card-pos-b{
     grid-area: b;
-     background-color: goldenrod;
+     /*background-color: goldenrod;*/
 }
 .card-pos-c{
     grid-area: c;
-     background-color: rosybrown;
+     /*background-color: rosybrown;*/
 }
 .card-pos-d{
     grid-area: d;
-     background-color: darkcyan;
+     /*background-color: darkcyan;*/
 }
 .card-pos-e{
     grid-area: e;
-     background-color: rgba(40, 54, 189, 0.17);
+     /*background-color: rgba(40, 54, 189, 0.17);*/
 }
 .card-pos-f{
     grid-area: f;
-     background-color: #653636;
+     /*background-color: #653636;*/
 }
 
 
@@ -220,7 +220,7 @@ header{
     transform: translateX(-350px) translateY(-40px);
 }
 .card.fly-in{
-    transform: translateY(-1000px) translateX(-1000px) rotate(45deg);
+    transform: translateY(-2000px) translateX(-2000px) rotate(45deg);
 }
 
 @media screen and (max-width:600px){
@@ -235,7 +235,7 @@ header{
         height:50%;
     }
     .current-status{
-        font-size:1.2rem;
+        font-size:1rem;
     }
     .game-play-button-container{
         width: 120px;

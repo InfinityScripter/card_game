@@ -28,7 +28,7 @@ const winColor = "green"
 const loseColor = "red"
 const primaryColor = "black"
 let roundNum = 0
-let maxRounds = 4
+let maxRounds = 5
 let score = 0
 let gameObj = {}
 const localStorageGameKey = "HTA"
@@ -96,7 +96,7 @@ function calculateScore() {
 
 function updateScore() {
   calculateScore()
-  updateStatusElement(scoreElem, "block", primaryColor, `Score <span class='badge'>${score}</span>`)
+  updateStatusElement(scoreElem, "block", primaryColor, `Счет <span class='badge'>${score}</span>`)
 
 }
 
