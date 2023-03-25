@@ -10,15 +10,13 @@
 
     --card-horizontal-space-lg: 100px;
     --card-horizontal-space-sm: 50px;
-
     --badge-bg-color:darkgrey;
     --primary-color: black;
     --secondary-color: #ffffff;
-
     --primary-font: 'Quicksand', sans-serif;
 }
 body{
-    height:100vh;
+    height:125vh;
     font-family: var(--primary-font);
 }
 

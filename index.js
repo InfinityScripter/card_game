@@ -1,4 +1,5 @@
 // Константы и переменные
+
 const cardObjectDefinitions = [
   {id: 1, imagePath: '/images/card-KingSpades.png'},
   {id: 2, imagePath: '/images/card-JackHearth.png'},
