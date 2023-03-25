@@ -259,7 +259,7 @@ function cardFlyInEffect() {
       clearInterval(id)
       playGameButtonElem.style.display = "inline-block"
     }
-    if (count == 1 || count == 250 || count == 500 || count == 750 || count == 1000 || count == 2000) {
+    if (count == 1 || count == 150 || count == 300 || count == 450 || count == 600 || count == 750) {
       cardCount++
       let card = document.getElementById(cardCount)
       card.classList.remove("fly-in")
